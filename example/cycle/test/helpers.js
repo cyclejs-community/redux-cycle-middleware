@@ -13,7 +13,8 @@ export function assertSourcesSinks(sources, sinks, main, done, timeOpts = {}) {
       if (typeof sourceOpts[firstKey] === 'function') {
         obj = {
           [sourceKey]: {
-            [firstKey]: () => Time.diagram(diagram, sourceOpts[firstKey]())
+            [firstKey]: (...args) =>
+              Time.diagram(diagram, sourceOpts[firstKey](...args)),
           }
         }
       } else {
