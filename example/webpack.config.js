@@ -1,26 +1,26 @@
-var path = require('path');
+const path = require("path");
 
-module.exports = {
-  entry: './index.js',
+const config = {
+  entry: "./index.js",
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/static/'
+    path: path.join(__dirname, "dist"),
+    filename: "bundle.js",
+    publicPath: "/static/"
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        loader: 'babel',
-        query: {
-          presets: ['es2015', 'react'],
-          babelrc: false
+        exclude: /(node_modules)/,
+        use: {
+          loader: "babel-loader"
         }
       }
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: [".js", ".jsx"]
   }
 };
+
+module.exports = config;
